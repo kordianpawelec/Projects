@@ -90,11 +90,36 @@ public class Atm extends JFrame {
 		String surename = JOptionPane.showInputDialog("Surname");
 		String pin = JOptionPane.showInputDialog("New PIN");
 		int startingBalance = Integer.parseInt(JOptionPane.showInputDialog("Starting Cash"));
-
-		User newUser = new User(surename, name, pin, startingBalance);
-		users.add(newUser);
-
-		displayMessage("New User Created" + name + " " + surename);
+		
+		
+		
+		if(isValidPIN(pin)) {
+			displayMessage("User with the same pin exists");
+		}else {
+			User newUser = new User(surename, name, pin, startingBalance);
+			users.add(newUser);
+			displayMessage("New User Created: " + name + " " + surename);
+			
+		}
+		
+		/*
+		 * 
+		
+		
+		for(User existUser : users) {
+			if(existUser.getPin().equals(newUser.getPin())) {
+				displayMessage("User with the same pin exists");
+			}
+			else {
+				users.add(newUser);
+				displayMessage("New User Created: " + name + " " + surename);
+				
+			}
+		
+			}
+		 */
+		
+	
 	}
 
 	private void checkBalance() {
